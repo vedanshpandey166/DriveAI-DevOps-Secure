@@ -1,0 +1,20 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+fastapi
+uvicorn
+pydantic
+
+langchain
+langchain-groq
+langgraph
+
+transformers
+torch==2.2.2+cpu
+torchaudio==2.2.2+cpu
+
+soundfile
+numpy<2
+
+python-multipart
+python-dotenv
+httpx

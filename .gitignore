@@ -1,0 +1,53 @@
+# Environment variables
+.env
+
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Backend temp audio files
+backend/temp_audio/*
+!backend/temp_audio/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+terraform/keys/driveai-key
+
+
+# Secrets
+.env
+*.env
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+
+# SSH keys
+terraform/keys/
+*.pem
+
+# Docker
+**/__pycache__/
+**/*.log
+
+# Node
+node_modules/
+
+# Python
+venv/

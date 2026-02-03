@@ -1,0 +1,23 @@
+services:
+  backend:
+    image: driveai-backend
+    container_name: driveai-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - model_cache:/models
+    restart: unless-stopped
+
+  frontend:
+    image: driveai-frontend
+    container_name: driveai-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  model_cache:
