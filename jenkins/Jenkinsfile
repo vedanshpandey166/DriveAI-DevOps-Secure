@@ -19,8 +19,8 @@ pipeline {
 
         stage('Build Images') {
             steps {
-                buildDocker(env.BACKEND_IMAGE, "docker/backend")
-                buildDocker(env.FRONTEND_IMAGE, "docker/frontend")
+                buildDocker(env.BACKEND_IMAGE, "docker/backend/Dockerfile")
+                buildDocker(env.FRONTEND_IMAGE, "docker/frontend/Dockerfile")
             }
         }
 
@@ -38,4 +38,5 @@ pipeline {
         }
     }
 }
+
 
