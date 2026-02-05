@@ -13,7 +13,7 @@ pipeline {
 
         stage('Clone Repo') {
             steps {
-                cloneRepo('https://github.com/vedanshpandey166/DriveAI-DevOps.git')
+                cloneRepo('https://github.com/vedanshpandey166/DriveAI-DevOps-Secure.git')
             }
         }
 
@@ -38,3 +38,4 @@ pipeline {
         }
     }
 }
+
