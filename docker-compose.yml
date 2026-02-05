@@ -1,6 +1,6 @@
 services:
   backend:
-    image: driveai-backend
+    image: <dockerhub-username>/driveai-frontend:latest
     container_name: driveai-backend
     ports:
       - "8000:8000"
@@ -11,7 +11,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: driveai-frontend
+    image: <dockerhub-username>/driveai-frontend:latest
     container_name: driveai-frontend
     ports:
       - "3000:3000"
