@@ -1,0 +1,40 @@
+@Library('jenkins-shared-library') _
+
+pipeline {
+    agent any
+
+    environment {
+        BACKEND_IMAGE  = "driveai-backend"
+        FRONTEND_IMAGE = "driveai-frontend"
+        DOCKER_CREDS   = "dockerhub-creds"
+    }
+
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                cloneRepo('https://github.com/vedanshpandey166/DriveAI-DevOps.git')
+            }
+        }
+
+        stage('Build Images') {
+            steps {
+                buildDocker(env.BACKEND_IMAGE, "docker/backend")
+                buildDocker(env.FRONTEND_IMAGE, "docker/frontend")
+            }
+        }
+
+        stage('Push Images') {
+            steps {
+                pushDocker(env.BACKEND_IMAGE, env.DOCKER_CREDS)
+                pushDocker(env.FRONTEND_IMAGE, env.DOCKER_CREDS)
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                deployDocker()
+            }
+        }
+    }
+}
