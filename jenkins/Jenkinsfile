@@ -1,42 +1,21 @@
-@Library('jenkins-shared-library') _
-
 pipeline {
     agent any
 
-    environment {
-        BACKEND_IMAGE  = "driveai-backend"
-        FRONTEND_IMAGE = "driveai-frontend"
-        DOCKER_CREDS   = "dockerhub-creds"
-    }
-
     stages {
 
-        stage('Clone Repo') {
+        stage('Checkout Repo') {
             steps {
-                cloneRepo('https://github.com/vedanshpandey166/DriveAI-DevOps-Secure.git')
+                checkout scm
             }
         }
 
-        stage('Build Images') {
+        stage('Deploy Containers') {
             steps {
-                buildDocker(env.BACKEND_IMAGE, "docker/backend/Dockerfile")
-                buildDocker(env.FRONTEND_IMAGE, "docker/frontend/Dockerfile")
-            }
-        }
-
-        stage('Push Images') {
-            steps {
-                pushDocker(env.BACKEND_IMAGE, env.DOCKER_CREDS)
-                pushDocker(env.FRONTEND_IMAGE, env.DOCKER_CREDS)
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                deployDocker()
+                sh '''
+                  docker compose pull
+                  docker compose up -d
+                '''
             }
         }
     }
 }
-
-
