@@ -1,10 +1,24 @@
 pipeline {
     agent any
 
+    environment {
+        GROQ_API_KEY = credentials('GROQ_API_KEY')
+    }
+
     stages {
         stage('Checkout Repo') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Create env file') {
+            steps {
+                sh '''
+                  cat <<EOF > .env
+                  GROQ_API_KEY=${GROQ_API_KEY}
+                  EOF
+                '''
             }
         }
 
