@@ -19,9 +19,11 @@ Deploy and run a multi-container application
 Follow industry-standard DevOps architecture
 
 📌 Architecture Overview
+
 Developer → Docker Hub → Jenkins (EC2) → Docker Compose → Frontend (3000) + Backend (8000) → Users
 
 ⚙️ Tech Stack
+
 Infrastructure & DevOps
 
 AWS EC2 (Ubuntu 20.04 / 22.04 – t2.micro)
@@ -70,6 +72,7 @@ http://<EC2-PUBLIC-IP>:8080
 
 🚀 Complete Run Steps (For Anyone Cloning This Repo)
 🔹 Step 1: Clone the Repository
+
 git clone https://github.com/vedanshpandey166/DriveAI-DevOps-Secure.git
 cd DriveAI-DevOps-Secure
 
