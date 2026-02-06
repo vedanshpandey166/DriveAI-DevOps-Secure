@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout Repo') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Deploy Containers') {
+        stage('Deploy Application') {
             steps {
                 sh '''
                   docker compose pull
