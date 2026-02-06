@@ -13,17 +13,27 @@ Follow industry-standard DevOps architecture
 📌 Architecture Overview:
 
 Developer (Local Machine)
-   └── Docker build & push
-           ↓
-      Docker Hub
-           ↓
-   Jenkins (Dockerized on EC2)
-           ↓
-   Docker Compose (Deploy)
-           ↓
-Frontend (3000)  ←→  Backend (8000)
-           ↓
-        End Users
+  |
+  |-- Build Docker Images
+  |-- Push Images
+  v
+Docker Hub (Image Registry)
+  |
+  |-- Jenkins pulls images
+  v
+Jenkins (Dockerized on AWS EC2)
+  |
+  |-- Checkout repository
+  |-- Inject secrets (.env)
+  |-- docker compose pull
+  |-- docker compose up -d
+  v
+Docker Engine (EC2 Host)
+  |
+  |-- Run frontend container (Port 3000)
+  |-- Run backend container (Port 8000)
+  v
+End Users (Browser / API Clients)
 
 
 ⚙️ Tech Stack
